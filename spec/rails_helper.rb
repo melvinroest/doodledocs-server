@@ -63,7 +63,7 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 end
 
-
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 # configure shoulda matchers to use rspec as the test framework and full matcher libraries for rails
 Shoulda::Matchers.configure do |config|
@@ -91,5 +91,8 @@ RSpec.configure do |config|
       example.run
     end
   end
-  # [...]
+  
+  config.include RequestSpecHelper
+  config.include ControllerSpecHelper
+
 end

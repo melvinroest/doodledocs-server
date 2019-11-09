@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_02_152844) do
+ActiveRecord::Schema.define(version: 2019_11_09_040056) do
+
+  create_table "settings", force: :cascade do |t|
+    t.integer "pencil_thickness"
+    t.integer "pencil_pressure_sensitivity"
+    t.integer "eraser_thickness"
+    t.boolean "annotation_options"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "fullname"

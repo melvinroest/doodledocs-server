@@ -6,5 +6,5 @@ RSpec.describe Settings, type: :model do
   it { should validate_presence_of(:pencil_thickness)}
   it { should validate_presence_of(:pencil_pressure_sensitivity)}
   it { should validate_presence_of(:eraser_thickness)}
-  it { should validate_presence_of(:annotation_options)}
+  it { should validate_inclusion_of(:annotation_options).in?([true, false])}
 end

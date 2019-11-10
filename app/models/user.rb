@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_one :settings
 
   # Validations
-  validates_presence_of :fullname, :username, :password_digest
+  validates_presence_of :fullname, :username, :email, :password_digest
   validates :email, confirmation: true
   validates :email_confirmation, presence: true
   validates_inclusion_of :email_opt_out, in: [true, false]

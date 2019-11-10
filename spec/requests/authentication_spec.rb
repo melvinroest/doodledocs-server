@@ -4,7 +4,13 @@ RSpec.describe 'Authentication', type: :request do
   # Authentication test suite
   describe 'POST /auth/login' do
     # create test user
-    let!(:user) { create(:user) }
+    let!(:user) do
+      user = build(:user)
+      user.email_confirmation = user.email
+      user.settings = create(:settings)
+      user.save!
+      user
+    end
     # set headers for authorization
     let(:headers) { valid_headers.except('Authorization') }
     # set test valid and invalid credentials

@@ -2,14 +2,15 @@ require 'rails_helper'
 
 RSpec.describe 'Settings', type: :request do
 
-  let(:headers) do
-    settings = create(:settings)
+  let(:user) do
     user = build(:user)
     user.email_confirmation = user.email
-    user.settings = settings
+    user.settings = create(:settings)
     user.save!
-    valid_headers(user)
+    user
   end
+
+  let(:headers) {valid_headers}
 
   describe 'GET /settings' do
     before { get '/settings', params: {}, headers: headers }

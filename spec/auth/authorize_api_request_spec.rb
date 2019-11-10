@@ -3,7 +3,13 @@ require 'rails_helper'
 
 RSpec.describe AuthorizeApiRequest do
   # Create test user
-  let(:user) { create(:user) }
+  let(:user) do
+    user = build(:user)
+    user.email_confirmation = user.email
+    user.settings = create(:settings)
+    user.save!
+    user
+  end
   # Mock `Authorization` header
   let(:header) { { 'Authorization' => token_generator(user.id) } }
   # Invalid request subject

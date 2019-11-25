@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   post 'auth/login', to: 'authentication#authenticate'
   post 'signup', to: 'users#create'
   get 'settings', to: 'settings#index'
-  put 'settings', to: 'settings#update'
+  # put 'settings', to: 'settings#update'
+  put 'settings/:id', to: 'settings#update'
 end

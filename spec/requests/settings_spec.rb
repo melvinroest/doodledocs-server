@@ -26,9 +26,13 @@ RSpec.describe 'Settings', type: :request do
 
   describe 'PUT /settings' do
     let(:valid_attributes) do 
-      attributes_for(:settings)
+      { 
+        settings: attributes_for(:settings) 
+      }
     end
-    before { put "/settings", params: valid_attributes.to_json, headers: headers }
+    
+    # If it were me, I'd do put /settings as there is only one of it, but ember defaults to /settings/:id
+    before { put "/settings/1", params: valid_attributes.to_json, headers: headers }
 
       it 'updates the record' do
         expect(response.body).to be_empty

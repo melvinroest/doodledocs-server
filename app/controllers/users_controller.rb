@@ -6,8 +6,7 @@ class UsersController < ApplicationController
     if potential_user == nil
       user = User.create!(user_params)
       auth_token = AuthenticateUser.new(user.email, user.password).call
-      user.password_digest = "dummy_password"
-      response = { user: user, auth_token: auth_token }
+      response = { message: Message.account_created, auth_token: auth_token }
       json_response(response, :created)
     else
       json_response({error_message: "user is already registered"}, :ok)
